@@ -46,7 +46,7 @@
 
         IWebElement ItemTotal => this.driver.FindElement(By.Id("sc-subtotal-label-buybox"));
 
-        IWebElement FilteringByPrice => this.driver.FindElement(By.Id("p_36/14674873011"));
+        IWebElement FilteringByPrice => this.driver.FindElement(By.XPath("//ul[@aria-labelledby='p_36-title']/li"));
 
         public void SelectingLocation()
         {
