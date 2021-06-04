@@ -70,7 +70,7 @@ namespace Assignments.TestData {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RedmiNote 10 Pro.
+        ///   Looks up a localized string similar to TCL Smart TV.
         /// </summary>
         internal static string ItemName {
             get {

@@ -59,6 +59,7 @@ namespace Assignments.Features
         [Then(@"User Clicks on '(.*)'")]
         public void ThenUserClicksOn(string p0)
         {
+            Thread.Sleep(5000);
             amazonSearchPage.AddingTheItemToCart();
         }
 

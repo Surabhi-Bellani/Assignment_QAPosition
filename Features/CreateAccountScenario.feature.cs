@@ -84,11 +84,9 @@ namespace Assignments.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Create Account with Duplicate email")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
         public virtual void CreateAccountWithDuplicateEmail()
         {
-            string[] tagsOfScenario = new string[] {
-                    "mytag"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create Account with Duplicate email", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 7

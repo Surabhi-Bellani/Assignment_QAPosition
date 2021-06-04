@@ -4,12 +4,14 @@
     using OpenQA.Selenium;
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Threading;
 
     public class AmazonSearchPage : CommonUtils
     {
         private IWebDriver driver = null;
+
 
         public AmazonSearchPage(IWebDriver driver) : base(driver)
         {
@@ -25,6 +27,8 @@
         IWebElement SearchButton => this.driver.FindElement(By.Id("nav-search-submit-button"));
 
         IList<IWebElement> ListOfResults => this.driver.FindElements(By.XPath("//h2/a/span[contains(@class,'a-size-medium')]"));
+
+        IWebElement Result => this.driver.FindElement(By.XPath("//h2/a/span[contains(@class,'a-size-medium')]"));
 
         IList<string> ListOfOptionsInString => this.ListOfResults.Select(c => c.Text).ToList();
 
@@ -68,7 +72,7 @@
 
         public string SelectingAllCategoriesOption()
         {
-           return this.SelectingTheDropdown();
+            return this.SelectingTheDropdown();
         }
 
         public void SubmittingTheSearchItem()
@@ -80,6 +84,17 @@
         public void AddingTheItemToTheCart()
         {
             this.SubmittingTheChoice(this.AddToCartButton);
+        }
+
+        public string CreateFolder()
+        {
+            string currentFolder = CommonUtils.GetComponentDirectoryPath("ItemsList") + Path.AltDirectorySeparatorChar;
+            if (!Directory.Exists(currentFolder))
+            {
+                Directory.CreateDirectory(currentFolder);
+            }
+
+            return currentFolder;
         }
 
         public void ClickingThePriceFilter()
@@ -97,18 +112,28 @@
 
         public void HoveringAndCLickingTheMostMatchingItem(string itemName)
         {
+
             try
             {
-                for (var j = 0; j <= this.ListOfResults.Count; j++)
+                IList<string> optionsDisplayed = new List<string>();
+                int count = 0;
+                foreach (var element in this.ListOfOptionsInString)
                 {
-                    IWebElement element = this.ListOfResults[j];
-                    string textOfElement = element.Text;
-                    if (textOfElement.Contains(itemName))
+                    
+                    var itemNameInArray = itemName.ToLookup(x => x);
+                    var elementNameInArray = element.ToLookup(x => x);
+
+                    if (itemNameInArray.All(xs => xs.Count() <= elementNameInArray[xs.Key].Count()))
                     {
-                        this.ClickingTHeElementAfterMouseHovering(element);
+                        this.ClickElementAndWaitForPageLoad(this.ListOfResults[count]);
+                        this.WaitForPageLoad();
                         break;
                     }
-                    continue;
+                    else
+                    {
+                        count++;
+                        continue;
+                    }
                 }
             }
             catch (Exception e)
@@ -138,10 +163,10 @@
                     foreach (var element in optionsDisplayed)
                     {
                         newStringList.Add(element + System.Environment.NewLine);
-                        System.IO.File.AppendAllText("C:\\TestData\\Test1.txt", element + System.Environment.NewLine);
+                        System.IO.File.AppendAllText(this.CreateFolder() + Path.AltDirectorySeparatorChar + "Items.txt", element + System.Environment.NewLine);
                     }
                 }
-                while (optionsDisplayed.Count==0);
+                while (optionsDisplayed.Count == 0);
             }
             catch (Exception e)
             {
@@ -155,6 +180,7 @@
         {
             try
             {
+                this.WaitForElement(this.AddToCartButton);
                 this.SubmittingTheChoice(this.AddToCartButton);
             }
             catch (Exception e)
