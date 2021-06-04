@@ -1,9 +1,6 @@
 ﻿using OpenQA.Selenium;
-using Assignment.Base;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Text;
 using OpenQA.Selenium.Support.UI;
 using NUnit.Framework;
 using OpenQA.Selenium.Interactions;
@@ -12,13 +9,13 @@ using System.IO;
 
 namespace Assignments.CommonUtility
 {
-    public class Commonlib
+    public class CommonUtils
     {
         private IWebDriver driver = null;
         string browser = ConfigurationManager.AppSettings["browser"];
         private static ResXResourceSet resource = new ResXResourceSet(GetFilePath("TestData", "TestResource.resx"));
 
-        public Commonlib(IWebDriver driver)
+        public CommonUtils(IWebDriver driver)
         {
             
             try

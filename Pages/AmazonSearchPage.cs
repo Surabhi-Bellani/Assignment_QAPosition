@@ -4,13 +4,10 @@
     using OpenQA.Selenium;
     using System;
     using System.Collections.Generic;
-    using System.IO;
     using System.Linq;
-    using System.Text;
     using System.Threading;
-    using System.Threading.Tasks;
 
-    public class AmazonSearchPage : Commonlib
+    public class AmazonSearchPage : CommonUtils
     {
         private IWebDriver driver = null;
 
@@ -102,20 +99,16 @@
         {
             try
             {
-                string s = null;
                 for (var j = 0; j <= this.ListOfResults.Count; j++)
                 {
-                    IWebElement e = this.ListOfResults[j];
-                    string t = e.Text;
-                    if (t.Contains(itemName))
+                    IWebElement element = this.ListOfResults[j];
+                    string textOfElement = element.Text;
+                    if (textOfElement.Contains(itemName))
                     {
-                        this.ClickingTHeElementAfterMouseHovering(e);
+                        this.ClickingTHeElementAfterMouseHovering(element);
                         break;
                     }
-                    else
-                    {
-                        continue;
-                    }
+                    continue;
                 }
             }
             catch (Exception e)
@@ -136,19 +129,19 @@
             try
             {
 
-                IList<string> s = new List<string>();
-                IList<string> z = new List<string>();
+                IList<string> optionsDisplayed = new List<string>();
+                IList<string> newStringList = new List<string>();
                 do
                 {
-                    s = this.ListOfOptionsInString;
+                    optionsDisplayed = this.ListOfOptionsInString;
 
-                    foreach (var e in s)
+                    foreach (var element in optionsDisplayed)
                     {
-                        z.Add(e + System.Environment.NewLine);
-                        System.IO.File.AppendAllText("C:\\TestData\\Test1.txt", e + System.Environment.NewLine);
+                        newStringList.Add(element + System.Environment.NewLine);
+                        System.IO.File.AppendAllText("C:\\TestData\\Test1.txt", element + System.Environment.NewLine);
                     }
                 }
-                while (s.Count==0);
+                while (optionsDisplayed.Count==0);
             }
             catch (Exception e)
             {

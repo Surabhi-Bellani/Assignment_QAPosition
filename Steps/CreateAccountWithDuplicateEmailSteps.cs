@@ -1,10 +1,8 @@
 ﻿using Assignment.Base;
 using Assignments.CommonUtility;
 using Assignments.Pages;
-using IronOcr;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using System;
 using TechTalk.SpecFlow;
 
 namespace Assignment.Steps
@@ -13,11 +11,11 @@ namespace Assignment.Steps
     public class CreateAccountSteps
     {
         IWebDriver driver = null;
-        private UserCreation userCreation;
+        private UserCreationPage userCreation;
         public CreateAccountSteps()
         {
             this.driver = DriverManager.GetDriver();
-            userCreation = new UserCreation(driver);
+            userCreation = new UserCreationPage(driver);
         }
 
         [Given(@"User hover SignIn option")]
@@ -41,10 +39,10 @@ namespace Assignment.Steps
         [When(@"User enters valid '(.*)','(.*)','(.*)','(.*)'")]
         public void WhenUserEntersValid(string p0, string p1, string p2, string p3)
         {
-            userCreation.EnterYouName(Commonlib.GetResourceString(p0));
-            userCreation.EnterYouEmail(Commonlib.GetResourceString(p1));
-            userCreation.EnterYouPassword(Commonlib.GetResourceString(p2));
-            userCreation.ReEnterYouPassword(Commonlib.GetResourceString(p3));
+            userCreation.EnterYouName(CommonUtils.GetResourceString(p0));
+            userCreation.EnterYouEmail(CommonUtils.GetResourceString(p1));
+            userCreation.EnterYouPassword(CommonUtils.GetResourceString(p2));
+            userCreation.ReEnterYouPassword(CommonUtils.GetResourceString(p3));
         }
 
         [When(@"User Click on Create your Amazon Account")]

@@ -49,9 +49,6 @@
     <Reference Include="Google.Protobuf, Version=3.7.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>packages\Google.Protobuf.3.7.0\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
-    <Reference Include="IronOcr, Version=2021.2.1.0, Culture=neutral, PublicKeyToken=c2cbcea5ea3f6d8d, processorArchitecture=MSIL">
-      <HintPath>packages\IronOcr.2021.2.1\lib\net40\IronOcr.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.TestPlatform.Build, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.TestPlatform.Build.16.10.0\lib\netstandard2.0\Microsoft.TestPlatform.Build.dll</HintPath>
     </Reference>
@@ -118,7 +115,7 @@
     <Compile Include="BaseLib\DriverManager.cs" />
     <Compile Include="BaseLib\PrePostConditions.cs" />
     <Compile Include="BaseLib\TestManager.cs" />
-    <Compile Include="CommonUtility\Commonlib.cs" />
+    <Compile Include="CommonUtility\CommonUtils.cs" />
     <Compile Include="TestData\TestResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -126,7 +123,7 @@
     </Compile>
     <Compile Include="Steps\AddingSelectItemInCartSteps.cs" />
     <Compile Include="Pages\AmazonSearchPage.cs" />
-    <Compile Include="Pages\UserCreation.cs" />
+    <Compile Include="Pages\UserCreationPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Steps\CreateAccountWithDuplicateEmailSteps.cs" />
   </ItemGroup>

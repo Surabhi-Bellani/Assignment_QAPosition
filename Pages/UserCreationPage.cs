@@ -1,18 +1,16 @@
 ﻿using Assignments.CommonUtility;
 using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Assignments.Pages
 {
-    class UserCreation : Commonlib
+    class UserCreationPage : CommonUtils
     {
         private IWebDriver driver = null;
         Random randomGenerator = new Random();
         
 
-        public UserCreation(IWebDriver driver)
+        public UserCreationPage(IWebDriver driver)
             : base(driver)
         {
             this.driver = driver;
@@ -49,8 +47,8 @@ namespace Assignments.Pages
 
         public void EnterYouName(string value)
         {
-            int r = randomGenerator.Next(10, 10099);
-            this.EnterValue(this.YourNameInputField, value + r);
+            int randomGeneratedNumber = randomGenerator.Next(10, 10099);
+            this.EnterValue(this.YourNameInputField, value + randomGeneratedNumber);
         }
 
         public void EnterYouEmail(string value)

@@ -16,7 +16,7 @@ namespace Assignments.BaseLib
         class PreConditionsManager
         {
             IWebDriver driver = DriverManager.GetDriver();
-            Commonlib commonlib = new Commonlib(DriverManager.GetDriver());
+            CommonUtils commonlib = new CommonUtils(DriverManager.GetDriver());
         }
     }
 }

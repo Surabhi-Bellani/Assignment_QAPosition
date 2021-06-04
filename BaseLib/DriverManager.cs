@@ -2,10 +2,8 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Text;
 
 namespace Assignment.Base
 {

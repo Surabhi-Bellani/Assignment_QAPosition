@@ -4,7 +4,7 @@ Background:
 	Given User is on Amazon home page
 	And Location is selected as US
 
-@mytag
+
 Scenario Outline: Adding Selected item into cart
 	Given 'All Departments' option is selected from the dropdown
 	And User Enters <ItemName> in the Search box
@@ -17,8 +17,8 @@ Scenario Outline: Adding Selected item into cart
 		| ItemName |
 		| ItemName |
 
-#Data scraping functionality
 
+#Data scraping functionality
 Scenario: Print All the options Displayed after Searching for an Item and Selecting the filter
 	Given 'All Departments' option is selected from the dropdown
 	And User Enters <ItemName> in the Search box

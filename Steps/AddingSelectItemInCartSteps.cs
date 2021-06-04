@@ -3,7 +3,6 @@ using Assignments.CommonUtility;
 using Assignments.Pages;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using System;
 using System.Threading;
 using TechTalk.SpecFlow;
 
@@ -42,7 +41,7 @@ namespace Assignments.Features
         [Given(@"User Enters (.*) in the Search box")]
         public void GivenUserEntersInTheSearchBox(string ItemName)
         {
-            amazonSearchPage.EnteringTheItemNameInSearchTextBox(Commonlib.GetResourceString(ItemName));
+            amazonSearchPage.EnteringTheItemNameInSearchTextBox(CommonUtils.GetResourceString(ItemName));
         }
         
         [When(@"User clicks on Search")]
@@ -55,7 +54,7 @@ namespace Assignments.Features
         [When(@"User clicks on the product link")]
         public void WhenUserClicksOnTheProductLink()
         {
-            amazonSearchPage.HoveringAndCLickingTheMostMatchingItem(Commonlib.GetResourceString("ItemName"));
+            amazonSearchPage.HoveringAndCLickingTheMostMatchingItem(CommonUtils.GetResourceString("ItemName"));
         }
         [Then(@"User Clicks on '(.*)'")]
         public void ThenUserClicksOn(string p0)

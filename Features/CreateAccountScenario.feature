@@ -3,7 +3,7 @@
 Background:
 	Given User is on Amazon home page
 
-@mytag
+
 Scenario: Create Account with Duplicate email
 	Given User hover SignIn option
 	And Click on Start here
